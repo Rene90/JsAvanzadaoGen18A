@@ -1,5 +1,5 @@
 console.log("API DE LA NASA")
-import fetch from "node-fetch"
+//import fetch from "node-fetch"
 
 const llave = "B4M0OPihTC0U7OFZcfj6PTizGQlDsl21351VamA7"
 
@@ -29,4 +29,30 @@ async function apinasa(url){
 }
 
 
-apinasa(apiNasa)
+//apinasa(apiNasa)
+let im
+let idim 
+async function fotosMarte(key,robot,camara,dia){
+
+    var urlmarte = `https://api.nasa.gov/mars-photos/api/v1/rovers/${robot}/photos?sol=${dia}&camera=${camara}&api_key=${key}`
+    const respuestaurl = await fetch(urlmarte)
+    var respjson = await respuestaurl.json()
+    console.log(respjson)
+    var listafotos =respjson.photos
+    console.log(listafotos)
+    listafotos.forEach((elemento,indice,arreglo)=>{
+        
+        im = elemento.img_src
+        idim = elemento.id
+
+    })
+}
+async function traerfoto(){
+    var contenedor =document.getElementById("contenedorFoto")
+    await fotosMarte(llave,"curiosity","FHAZ","1000")
+    
+    contenedor.innerHTML = `
+        <img src = ${im} alt= ${idim}>
+    `
+
+}
