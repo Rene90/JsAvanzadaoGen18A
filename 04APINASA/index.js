@@ -93,6 +93,34 @@ async function fotosMarte(key,robot,camara,dia){
         })
 
     }
+    else {
+        let botonant = document.getElementById("botonanterior")
+        let botonsig = document.getElementById("botonsiguiente")
+        listafotos.forEach((elemento,indice,arreglo)=>{
+            contenedor.innerHTML += `
+            <div class="card mb-2" style="width: 18rem;">
+            <img class="card-img-top" src=${elemento.img_src} alt=${elemento.id}>
+            <div class="card-body">
+              <h5 class="card-title">${elemento.rover.name}</h5>
+              <p class="card-text">${elemento.camera.full_name}</p>
+              
+            </div>
+          </div>      
+            
+            `
+            //botonsig.classList.remove("ocultar")
+            //if(contadorpagina>1){
+            //    botonant.classList.remove("ocultar")
+            //}
+           // if(contadorpagina ==1){
+           //     console.log("YA ENTRO A ESTA LINEA")
+           //     botonant.classList.add("ocultar")
+           // }
+
+    
+        })
+
+    }
 
    
 }
