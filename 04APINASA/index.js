@@ -48,11 +48,18 @@ async function fotosMarte(key,robot,camara,dia){
     })
 }
 async function traerfoto(){
-    var contenedor =document.getElementById("contenedorFoto")
-    await fotosMarte(llave,"curiosity","FHAZ","1000")
+    let rover = document.getElementById("rover")
+    let sensor = document.getElementById("sensor")
+    let diasolar = document.getElementById("diasolar")
+    let roverv = rover.value
+    let sensorv = sensor.value
+    let diasolarv = diasolar.value
+    console.log(roverv, sensorv, diasolarv)
+    //var contenedor =document.getElementById("contenedorFoto")
+    //await fotosMarte(llave,"curiosity","FHAZ","1000")
     
-    contenedor.innerHTML = `
-        <img src = ${im} alt= ${idim}>
-    `
+    //contenedor.innerHTML = `
+    //    <img src = ${im} alt= ${idim}>
+    //`
 
 }
