@@ -9,7 +9,7 @@ const request = require('request')
 const URI = 'https://goodreads-devf-aaron.herokuapp.com/api/v1/authors/'
 
 //? LISTAR A TODOS LOS AUTORES (authors)
-const listAuthors = ( ) => {
+const listAuthors = () => {
     request.get(URI,(error,response,body)=>{
         //validamos nuestra petición
         if(response.statusCode === 200){
@@ -30,7 +30,7 @@ const getAuthor = (id) => {
             const author = JSON.parse(body) // UN OBJETO JSON LO TENEMOS QUE CONVERTIR A UN OBJETO DE JAVASCRIPT 
             console.log(author)
         }else{
-            console.log("ID NO VALIDO: ", response.statusCode, response.statusMessage)
+            console.log("EL AUTHOR HA SIDO ELIMINADO: ", response.statusCode, response.statusMessage)
         }                                    //! 404                  Not Found
     })
 }  
@@ -56,7 +56,6 @@ const createAuthor = (jsonData) => {
 }
 
 //? PARTIAL UPDATE DE UN AUTOR
-
     const patchAuthor = (id,jsonData) => {
         const objConfig ={
             url: URI+id+'/', 
@@ -75,11 +74,23 @@ const createAuthor = (jsonData) => {
         })
     }
 
+//? ELIMINAR UN AUTOR
+    const deleteAuthor = (id) => {
+        request.delete(URI+id+'/', (error,response,body)=>{
+            //validamos nuestra petición
+            if(response.statusCode === 204){
+                console.log("EL AUTOR FUE ELIMINADO EXITOSAMENTE")
+            }else{
+                console.log(response.statusCode, response.statusMessage)
+            }                     //! 404                  Not Found
+        })
+    }
 
 
   module.exports = {
      listAuthors, 
      getAuthor,
      createAuthor,
-     patchAuthor
+     patchAuthor,
+     deleteAuthor
     } 
