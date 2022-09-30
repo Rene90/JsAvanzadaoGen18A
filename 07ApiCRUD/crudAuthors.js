@@ -55,8 +55,31 @@ const createAuthor = (jsonData) => {
     })
 }
 
+//? PARTIAL UPDATE DE UN AUTOR
+
+    const patchAuthor = (id,jsonData) => {
+        const objConfig ={
+            url: URI+id+'/', 
+            form: jsonData
+        }
+
+    request.patch(objConfig, (error,response,body) =>{
+            //validamos nuestra petición
+        if(response.statusCode === 200){
+            const author = JSON.parse(body)
+            console.log("SE ACTUALIZO EL AUTOR SATISFACTORIAMENTE: " +"\n", author)
+        }else {
+            console.log("UPS! ALGO SALIO MAL ", response.statusCode, response.statusMessage)
+        }                                         //! 404                  Not Found
+                                                  //! 400                  Bad Request
+        })
+    }
+
+
+
   module.exports = {
      listAuthors, 
      getAuthor,
-     createAuthor
+     createAuthor,
+     patchAuthor
     } 

@@ -10,15 +10,21 @@ const goodReadsCrud = require ('./crudAuthors')
 // goodReadsCrud.getAuthor(14891) //14710
 
 //* CREAR UN AUTOR (MANDAR UN JSON)
+// const jsonSend = {
+//    name: "CRISTIANO",
+// 	last_name: "RONALDO",
+// 	nacionalidad: "MX",
+// 	biography: "FUTBOLISTA PROFESIONAL",
+// 	gender: "M",
+// 	age: 36,
+// 	is_alive: true
+// }
+// goodReadsCrud.createAuthor(jsonSend)
 
-const jsonSend = {
-    name: "CRISTIANO",
-	last_name: "RONALDO",
-	nacionalidad: "MX",
-	biography: "FUTBOLISTA PROFESIONAL",
-	gender: "M",
-	age: 36,
-	is_alive: true
+//*PATCH A UN AUTOR 
+  const updateData = {
+	name: "CESAR",
+	last_name: "GUERRA",
+	gender: "m"
 }
-
-goodReadsCrud.createAuthor(jsonSend)
+goodReadsCrud.patchAuthor(14907,updateData)
